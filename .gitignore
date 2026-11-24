@@ -1,0 +1,11 @@
+cache/
+gsv_cache/
+gsv_tiles_cache/
+gpx_replay_cache/
+__pycache__/
+*.tmp
+_tmp_*
+
+# Files > 100 MB (exceeds GitHub's 100 MB file limit)
+route_hyperlapse.mp4
+route_hyperlapse_gsv_1080p_part1.mp4
