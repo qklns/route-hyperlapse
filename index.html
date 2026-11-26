@@ -145,6 +145,7 @@
     <div class="selector-group">
       <label class="title" for="videoPreset">Video:</label>
       <select id="videoPreset">
+        <option value="route_hyperlapse_gsv_720p.mp4|full" selected>Google Street View HD (1280x720, Full Route)</option>
         <option value="route_hyperlapse_gsv.mp4|full">Google Street View (640x360, Full Route)</option>
         <option value="route_hyperlapse.mp4|full">KartaView HD (1280x720, Full Route)</option>
         <option value="route_hyperlapse_gsv_1080p_part1.mp4|part1">Google Street View 1080p Part 1 (0–96 km)</option>
@@ -167,7 +168,7 @@
 
   <div class="split-grid">
     <div class="pane video-pane">
-      <video id="videoEl" controls playsinline webkit-playsinline preload="metadata" src="route_hyperlapse_gsv.mp4"></video>
+      <video id="videoEl" controls playsinline webkit-playsinline preload="metadata" src="route_hyperlapse_gsv_720p.mp4"></video>
     </div>
     <div class="pane map-pane">
       <div id="map"></div>

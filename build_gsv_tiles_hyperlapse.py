@@ -595,7 +595,7 @@ def encode_video(
     if cv_writer is not None:
         cv_writer.release()
 
-    grid_path = out_path.parent / "preview_grid_gsv_1080p.jpg"
+    grid_path = out_path.parent / f"preview_{out_path.stem}.jpg"
     create_preview_grid(preview_candidates, grid_path)
     print(
         f"Finished encoding {rendered} frames (skipped={skipped}) -> {out_path} "
@@ -624,9 +624,14 @@ def main() -> int:
     )
     parser.add_argument("--hud", action="store_true", help="Overlay km and date in top-left")
     parser.add_argument(
+        "--cache-dir",
+        default=None,
+        help="Cache directory for metadata and rendered frames (default: gsv_tiles_cache)",
+    )
+    parser.add_argument(
         "--encode-only",
         action="store_true",
-        help="Skip API calls and encode only already-cached 1080p frames",
+        help="Skip API calls and encode only already-cached frames",
     )
     parser.add_argument(
         "--force-metadata", action="store_true", help="Ignore cached tile_metadata.json"
@@ -642,7 +647,7 @@ def main() -> int:
     print(f"Loaded {len(route_frames)} route panoramas from {route_meta_path}")
 
     out_path = Path(args.out)
-    cache_dir = out_path.parent / "gsv_tiles_cache"
+    cache_dir = Path(args.cache_dir) if args.cache_dir else (out_path.parent / "gsv_tiles_cache")
     tile_meta_path = cache_dir / "tile_metadata.json"
     frames_dir = cache_dir / "frames"
 
